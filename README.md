@@ -72,3 +72,9 @@ In your IDE like _InlliJ_ you should build the project, then in the Gradle tasks
 ```
 You have to be located in the _samples_ packages to run the task. You can use the _gralew_ executable with relative path because this binary is located several directories above.
 
+## Integration to your projects
+
+You can clone this project and add the built JAR to your local dependencies.
+This plugin may be hosted on online platform soon.
+
+
