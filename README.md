@@ -54,10 +54,51 @@ The _targetFile_ is your true configuration file with all the details you want t
 The _verbose_ field must be defined to _true_ or _false_, but this field can be missing. If defined to true, more traces will be displayed.
 The common format for the task to use can be:
 
+
+## Examples
+
+For example you use a _dumb.properties_ file like:
+```
+enable_foo_feature = true
+
+enable_bar_feature = false
+
+some_granularity = medium
+
+three_decimal_numbers = 1.5;0.9;0.7
+
+four_integer_numbers = 0;20;40;60
+
+one_integer_number = 600
+
+complex_string = ED408701-6264-F393-FFFF-E50E24DDCA9E
+````
+
+You can apply a set of rules for your configuration (_dumb.rules.properties_) like:
+```
+enable_foo_feature = true|false
+
+enable_bar_feature = true|false
+
+some_granularity = low|medium|high
+
+three_decimal_numbers = [0-9]+\.[0-9]+;[0-9]+\.[0-9]+;[0-9]+\.[0-9]+
+
+four_integer_numbers = [0-9]+;[0-9]+;[0-9]+;[0-9]+
+
+one_integer_number = [0-9]+
+
+complex_string = [0-9A-Z]+-[0-9A-Z]+-[0-9A-Z]+-[0-9A-Z]+-[0-9A-Z]+
+```
+
+Use the same entry name for your configurations details.
+
+Finally the Gradle task to add to your build script:
+
 ```groovy
             propertieschecker {
-                rulesFile "src/main/assets/app_config.rules.properties"
-                targetFile  "src/main/assets/app_config.properties"
+                rulesFile "src/main/assets/dumb.properties"
+                targetFile  "src/main/assets/dumb.rules.properties"
             }
 ```
 
