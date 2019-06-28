@@ -1,15 +1,16 @@
-# Properties File Checker Gradle Plugin
+# Gradle plugin to check properties files
 
 ## Purpose of this plugin
 
-Project of a Gradle plugin used to check if a configuration file is well formatted or not using a file containing rules to follow.
-These files can be for example .properties files stored in the _assets_ folder of an Android project.
-Basicaly it reads target file to test and file containing rules, and stores their data into dictionaries.
-Then it makes assertions on each entry's value of the target value to check if the value for the current entry matches a regular expression
-for this entry.  
+Project of a Gradle plugin written in Groovy used to check if a configuration file is well formatted or not using a set of rules to follow.
 
-This plugin is useful if your use principles of "configuration as code". To make your project modular you maye write in configuration file
-some configuration details, and you would like to be sure this file is well written and does not contain errors or mistakes in the syntax.  
+These files can be for example .properties files stored in the _assets_ folder of an Android project.
+
+Basicaly it reads target file to check and also a 2nd file containing rules (regular expression), and stores their data into dictionaries.
+Then it makes assertions on each entry's value (of the file to process) to check if it matches to the dedicated rule.  
+
+This plugin is useful if you use principles of "configuration as code".
+To make your project modular you may write in configuration file some configuration details, and you would like to be sure this file is well written and does not contain errors or mistakes in the syntax.  
 
 ## Format for files to process
 
@@ -48,10 +49,10 @@ The Gradle task has 2 mandatory and 1 optional fields, and must follow the patte
             }
 ```
 
-The _rulesFile_ is the path to the file storing the regular expresions to apply to configuration details of _targetFile_.
-The _targetFile_ si your true configuration file will all the details you want to use for your project.
+The _rulesFile_ is the path to the file storing the regular expressions to apply to configuration details of _targetFile_.
+The _targetFile_ is your true configuration file with all the details you want to use for your project.
 The _verbose_ field must be defined to _true_ or _false_, but this field can be missing. If defined to true, more traces will be displayed.
-The common format for the task to use is:
+The common format for the task to use can be:
 
 ```groovy
             propertieschecker {
