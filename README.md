@@ -12,6 +12,7 @@ Then it makes assertions on each entry's value (of the file to process) to check
 This plugin is useful if you use principles of "configuration as code".
 To make your project modular you may write in configuration file some configuration details, and you would like to be sure this file is well written and does not contain errors or mistakes in the syntax.  
 
+
 ## Format for files to process
 
 Target file with configuration details to process must follow the format below:
@@ -37,6 +38,7 @@ File containing rules for the target file must follow the format below:
 	# Use the '=' symbol for affectation
 	# 'the regex' here is the regular expression to apply to the value of the entry with "the_key_of_configuration" name is the target file
 ```
+
 
 ## The Gradle task to add to build script
 
@@ -102,20 +104,22 @@ Finally the Gradle task to add to your build script:
             }
 ```
 
+
 ## Test the plugin
 
-In the _com.orange.labs.propertiesfilechecker.samples_ package you can find several configuration files containing entries to test and rules to apply.
+In the _samples_ folder you can find several configuration files containing entries to test and rules to apply.  
+
 The _build.gradle_ file uses many combinations of these files to test several cases (if an entry is missing, an entry does not apply to the rule, etc.).
 Update the build Gradle file to test the behavior of the plugin (warning or error messages, exceptions thrown, ...).
 In your IDE like _InlliJ_ you should build the project, then in the Gradle tasks panel run the task _publishToMavenLocal_ after having modified the files, and finally in command line run the task with:
 ```shell
 	gradlew  propertieschecker 
 ```
-You have to be located in the _samples_ packages to run the task. You can use the _gralew_ executable with relative path because this binary is located several directories above.
+
 
 ## Integration to your projects
 
-You can clone this project and add the built JAR to your local dependencies.
-This plugin may be hosted on online platform soon.
+You can clone this project and add the built JAR to your local dependencies.  
+This plugin may be hosted on online platform soon.  
 
 
